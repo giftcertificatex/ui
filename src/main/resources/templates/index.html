@@ -33,15 +33,25 @@
 <div class="hero-wrap js-fullheight img" style="background-image: url('images/home-bg.png');">
     <div class="overlay"></div>
     <div class="container-fluid px-0">
-        <div class="row d-md-flex no-gutters slider-text align-items-center js-fullheight justify-content-center">
-            <div class="col-lg-7">
+        <div class="row no-gutters slider-text align-items-center js-fullheight justify-content-center">
+            <div class="col-lg-5 align-self-center">
                 <form action="#" class="domain-form d-flex mb-3">
-                    <div class="form-group domain-name">
-                        <input type="number" class="form-control name px-4" placeholder="Enter certificate amount">
-                    </div>
-                    <div class="form-group domain-select d-flex">
-                        <button class="search-domain btn btn-primary text-center">Buy certificate</button>
-                    </div>
+					<div class="form-group domain-select d-flex">
+						<input type="number" class="form-control form-control-sm" list="certPredefValues" min="5" step="5" placeholder="Certificate price">
+						<datalist id="certPredefValues">
+							<option>5</option>
+							<option>10</option>
+							<option>20</option>
+							<option>50</option>
+							<option>100</option>
+						</datalist>
+					</div>
+					<div class="form-group domain-select d-flex">
+						<input type="email" class="form-control form-control-sm" id="email" placeholder="name@example.com">
+					</div>
+					<div class="form-group domain-select d-flex">
+						<button class="search-domain btn btn-primary text-center">Buy certificate</button>
+					</div>
                 </form>
             </div>
         </div>
@@ -102,14 +112,14 @@
     <div class="container">
         <div class="row justify-content-center mb-5">
             <div class="col-md-10 text-center heading-section ftco-animate">
-                <h2 class="mb-4">More than 1,125,000 clients used our service</h2>
+                <h2 class="mb-4">More than 1,000,000 clients used our service</h2>
             </div>
         </div>
         <div class="row justify-content-center">
             <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
                 <div class="block-18 text-center">
                     <div class="text">
-                        <strong class="number" data-number="12000">0</strong>
+                        <strong id="providers" class="number" data-number="12000">0</strong>
                         <span>Service Providers</span>
                     </div>
                 </div>
@@ -117,7 +127,7 @@
             <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
                 <div class="block-18 text-center">
                     <div class="text">
-                        <strong class="number" data-number="100">0</strong>
+                        <strong id="countries" class="number" data-number="100">0</strong>
                         <span>Countries</span>
                     </div>
                 </div>
@@ -125,7 +135,7 @@
             <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
                 <div class="block-18 text-center">
                     <div class="text">
-                        <strong class="number" data-number="10000">0</strong>
+                        <strong id="users" class="number" data-number="10000">0</strong>
                         <span>Registered Users</span>
                     </div>
                 </div>
@@ -133,7 +143,7 @@
             <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
                 <div class="block-18 text-center">
                     <div class="text">
-                        <strong class="number" data-number="9000">0</strong>
+                        <strong id="cities" class="number" data-number="9000">0</strong>
                         <span>Cities</span>
                     </div>
                 </div>
@@ -145,6 +155,7 @@
 <footer th:replace="footer::#ftco-footer"></footer>
 
 <div th:replace="loader::#ftco-loader"></div>
+
 
 <script th:src="@{/js/jquery.min.js}"></script>
 <script th:src="@{/js/jquery-migrate-3.0.1.min.js}"></script>
@@ -158,9 +169,19 @@
 <script th:src="@{/js/aos.js}"></script>
 <script th:src="@{/js/jquery.animateNumber.min.js}"></script>
 <script th:src="@{/js/scrollax.min.js}"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>-->
 <script th:src="@{/js/google-map.js}"></script>
 <script th:src="@{/js/main.js}"></script>
+
+<script>
+	$(document).ready(function(){
+		var today = new Date();
+			$("#providers").attr("data-number", today/100000000 + Math.floor(Math.random() * 10) * 100);
+			$("#countries").attr("data-number", today/100000000000 + 7 + Math.floor(Math.random() * 10));
+			$("#users").attr("data-number", today/1000000 + Math.floor(Math.random() * 100000) + 432);
+			$("#cities").attr("data-number", today/10000000000 + Math.floor(Math.random() * 10) + 34);
+		});
+</script>
 
 </body>
 </html>

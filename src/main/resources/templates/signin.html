@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Certificates</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,600,700" rel="stylesheet">
+
+    <link rel="stylesheet" th:href="@{/css/open-iconic-bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/animate.css}">
+
+    <link rel="stylesheet" th:href="@{/css/owl.carousel.min.css}">
+    <link rel="stylesheet" th:href="@{/css/owl.theme.default.min.css}">
+    <link rel="stylesheet" th:href="@{css/magnific-popup.css}">
+
+    <link rel="stylesheet" th:href="@{/css/aos.css}">
+
+    <link rel="stylesheet" th:href="@{/css/ionicons.min.css}">
+
+    <link rel="stylesheet" th:href="@{/css/bootstrap-datepicker.css}">
+    <link rel="stylesheet" th:href="@{/css/jquery.timepicker.css}">
+
+
+    <link rel="stylesheet" th:href="@{/css/flaticon.css}">
+    <link rel="stylesheet" th:href="@{/css/icomoon.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+
+
+<script th:src="@{/js/jquery.min.js}"></script>
+<script th:src="@{/js/jquery-migrate-3.0.1.min.js}"></script>
+<script th:src="@{/js/popper.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/jquery.easing.1.3.js}"></script>
+<script th:src="@{/js/jquery.waypoints.min.js}"></script>
+<script th:src="@{/js/jquery.stellar.min.js}"></script>
+<script th:src="@{/js/owl.carousel.min.js}"></script>
+<script th:src="@{/js/jquery.magnific-popup.min.js}"></script>
+<script th:src="@{/js/aos.js}"></script>
+<script th:src="@{/js/jquery.animateNumber.min.js}"></script>
+<script th:src="@{/js/scrollax.min.js}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<script th:src="@{/js/google-map.js}"></script>
+<script th:src="@{/js/main.js}"></script>
+
+	<script>
+		$(document).ready(function(){
+			$("#tabSingin").show();
+			$("#tabSingup").hide();
+			
+			$("#formBuisness").hide();
+			$("#formPersonal").show();
+			
+			$("#subTabSignin").click(function(){
+				$("#tabSingin").show();
+				$("#tabSingup").hide();
+				$("#subTabSignin").attr("class", "nav-link active");
+				$("#subTabSignup").attr("class", "nav-link btn-info");
+			});
+			$("#subTabSignup").click(function(){
+				$("#tabSingin").hide();
+				$("#tabSingup").show();
+				$("#subTabSignin").attr("class", "nav-link btn-info");
+				$("#subTabSignup").attr("class", "nav-link active");
+			});
+			
+			$("#btnPersonalReg").click(function(){
+				$("#formPersonal").show();
+				$("#formBuisness").hide();
+				$("#btnPersonalReg").attr("class", "btn btn-success");
+				$("#btnBuisnessReg").attr("class", "btn btn-sm btn-secondary");
+			});
+			$("#btnBuisnessReg").click(function(){
+				$("#formPersonal").hide();
+				$("#formBuisness").show();
+				$("#btnPersonalReg").attr("class", "btn btn-sm btn-secondary");
+				$("#btnBuisnessReg").attr("class", "btn btn-success");
+			});
+		});
+	</script>
+	
+	<nav th:replace="navigation::#ftco-navbar"></nav>
+
+<div class="hero-wrap js-fullheight img" style="background-image: url('images/home-bg.png');" >
+    <div class="overlay"></div>
+    <div class="container-fluid px-0">
+		<div class="row mt-10">
+		<div class="col-md-8 mt-5">
+		</div>
+		<!--<p style="display: none;">Menu<p>-->
+		</div>
+		<div class="row mt-3 align-items-center justify-content-center">
+			<div class="col-md-8 mt-5">
+				<div id="navTabSingin" class="mx-auto" style="max-width: 300px;">
+					<ul class="nav nav-tabs nav-justified">
+						<li class="nav-item">
+							<a id="subTabSignin" class="nav-link active" href="#">Singin</a>
+						</li>
+						<li class="nav-item">
+							<a id="subTabSignup" class="nav-link btn-info" href="#">Signup</a>
+						</li>
+					</ul>
+				</div>
+
+				<div id="tabSingin" class="mx-auto" style="max-width: 300px;">
+					<form id="formSignin">
+						<div class="form-group">
+							<label for="signinEmail" class="text-white">Email address</label>
+							<input type="email" class="form-control" id="signinEmail" placeholder="name@example.com">
+						</div>
+						<div class="form-group">
+							<label for="signinPass" class="text-white">Password</label>
+							<input type="password" class="form-control" id="signinPass" placeholder="Password">
+						</div>
+						<button type="submit" class="btn btn-success">Login</button>
+					</form>
+				</div>
+				<div id="tabSingup" class="mx-auto" style="max-width: 300px;">
+					<p class="text-center text-white">Please, fill in the registration info:</p>
+					<div>
+						<ul class="nav nav-pills nav-fill">
+						  <li class="nav-item">
+							<button id="btnPersonalReg" class="btn btn-success" type="button" >Personal</button>
+						  </li>
+						  <li class="nav-item">
+							<button id="btnBuisnessReg" class="btn btn-sm btn-secondary" type="button" >Buisness</button>
+						  </li>
+						</ul>
+						<form id="formPersonal">
+							<div class="form-group">
+								<label for="personalEmail" class="text-white">Email address</label>
+								<input type="email" class="form-control" id="personalEmail" placeholder="name@example.com">
+								<small id="emailHelp" class="form-text text-white">We'll never share your email with anyone else.</small>
+							</div>
+							<div class="form-group">
+								<label for="personalPass" class="text-white">Password</label>
+								<input type="password" class="form-control" id="personalPass" placeholder="Password">
+							</div>
+							<button type="submit" class="btn btn-success">Submit</button>
+						</form>
+						<form id="formBuisness">
+							<div class="form-group">
+								<label for="buisnessCompany" class="text-white">Company name</label>
+								<input class="form-control" type="text" id="buisnessCompany" placeholder="Default input">
+							</div>
+							<div class="form-group">
+								<label for="buisnessEmail" class="text-white">Email address</label>
+								<input type="email" class="form-control" id="buisnessEmail" placeholder="name@example.com">
+								<small id="emailHelp" class="form-text text-white">We'll never share your email with anyone else.</small>
+							</div>
+							<div class="form-group">
+								<label for="buisnessPass" class="text-white">Password</label>
+								<input type="password" class="form-control" id="buisnessPass" placeholder="Password">
+							</div>
+							<button type="submit" class="btn btn-success">Submit</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+    </div>
+		<div class="row mt-3">
+		</div>
+</div>
+
+</div>
+
+<footer th:replace="footer::#ftco-footer"></footer>
+
+<div th:replace="loader::#ftco-loader"></div>
+
+</body>
+</html>

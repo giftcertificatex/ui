@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
-    <title>Ignite - Free Bootstrap 4 Template by Colorlib</title>
+    <title>About</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -135,14 +135,14 @@
     <div class="container">
         <div class="row justify-content-center mb-5">
             <div class="col-md-10 text-center heading-section ftco-animate">
-                <h2 class="mb-4">More than 1,125,000 clients used our service</h2>
+                <h2 class="mb-4">More than 1,000,000 clients used our service</h2>
             </div>
         </div>
         <div class="row justify-content-center">
             <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
                 <div class="block-18 text-center">
                     <div class="text">
-                        <strong class="number" data-number="12000">0</strong>
+                        <strong id="providers" class="number" data-number="12000">0</strong>
                         <span>Service Providers</span>
                     </div>
                 </div>
@@ -150,7 +150,7 @@
             <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
                 <div class="block-18 text-center">
                     <div class="text">
-                        <strong class="number" data-number="100">0</strong>
+                        <strong id="countries" class="number" data-number="100">0</strong>
                         <span>Countries</span>
                     </div>
                 </div>
@@ -158,7 +158,7 @@
             <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
                 <div class="block-18 text-center">
                     <div class="text">
-                        <strong class="number" data-number="10000">0</strong>
+                        <strong id="users" class="number" data-number="10000">0</strong>
                         <span>Registered Users</span>
                     </div>
                 </div>
@@ -166,7 +166,7 @@
             <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
                 <div class="block-18 text-center">
                     <div class="text">
-                        <strong class="number" data-number="9000">0</strong>
+                        <strong id="cities" class="number" data-number="9000">0</strong>
                         <span>Cities</span>
                     </div>
                 </div>
@@ -186,7 +186,7 @@
         </div>
         <div class="row ftco-animate">
             <div class="col-md-12">
-                <div class="carousel-testimony owl-carousel ftco-owl">
+                <div id="owlDevCarousel" class="owl-carousel">
                     <div class="item">
                         <div class="testimony-wrap p-4 text-center">
                             <div class="user-img mb-4" style="background-image: url(images/person_1.jpg)">
@@ -273,6 +273,30 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 <script th:src="@{/js/google-map.js}"></script>
 <script th:src="@{/js/main.js}"></script>
+
+<script>
+
+	$(document).ready(function(){
+			$("#owlDevCarousel").owlCarousel({
+				loop: true,
+				center: true,
+				items: 3,
+				margin: 30,
+				autoplay: true,
+				dots:true,
+				nav:true,
+				autoplayTimeout: 2500,
+				smartSpeed: 450,
+			});
+			
+	
+			var today = new Date();
+			$("#providers").attr("data-number", today/100000000 + Math.floor(Math.random() * 10) * 100);
+			$("#countries").attr("data-number", today/100000000000 + 7 + Math.floor(Math.random() * 10));
+			$("#users").attr("data-number", today/1000000 + Math.floor(Math.random() * 100000) + 432);
+			$("#cities").attr("data-number", today/10000000000 + Math.floor(Math.random() * 10) + 34);
+		});
+</script>
 
 </body>
 </html>
